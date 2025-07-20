@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pilih Surat OSIS</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Cek apakah user sudah memilih surat sebelumnya
+    if (localStorage.getItem('suratDipilih')) {
+      window.location.href = "surat.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <img src="assets/logo-osis.png" alt="Logo OSIS" class="logo-osis" />
+      <h1>Pilih Satu Surat yang Kakak Inginkan</h1>
+      <h2>SURAT HANYA BISA 1X PILIH</h2>
+      <h3>NOTE : PILIH YANG KALIAN SUKA, KALIAN HANYA BISA MEMILIH 1X!</h3>
+    </header>
+
+    <div class="surat-grid">
+      <button class="card merah" onclick="pilihSurat('merah')">
+        <img src="assets/surat-merah.png" alt="Surat Merah" />
+        <p>Surat Merah</p>
+      </button>
+      <button class="card pink" onclick="pilihSurat('pink')">
+        <img src="assets/surat-pink.png" alt="Surat Pink" />
+        <p>Surat Pink</p>
+      </button>
+      <button class="card biru" onclick="pilihSurat('biru')">
+        <img src="assets/surat-biru.png" alt="Surat Biru" />
+        <p>Surat Biru</p>
+      </button>
+    </div>
+
+    <footer>
+      <p>© 2025 Badruddin - TJKT | Smakensa</p>
+    </footer>
+  </div>
+
+  <script>
+    function pilihSurat(warna) {
+      localStorage.setItem('suratDipilih', warna);
+      window.location.href = 'surat.html';
+    }
+  </script>
+</body>
+</html>

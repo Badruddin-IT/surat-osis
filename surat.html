@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surat OSIS MPLS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .alert-box {
+      background-color: #fff3cd;
+      border: 1px solid #ffecb5;
+      color: #856404;
+      padding: 1rem;
+      border-radius: 8px;
+      width: fit-content;
+      margin: 1rem auto;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .alert-box.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <img src="assets/logo-osis.png" alt="Logo OSIS" class="logo-osis" />
+      <h1 id="judul-surat">Surat</h1>
+    </header>
+
+    <div id="alert" class="alert-box hidden">
+      ⚠️ Maaf, Kamu tidak bisa kembali karena adanya sistem satu kali pilih surat.
+    </div>
+
+    <div id="isi-surat" class="surat-box">
+      <p id="konten-surat"></p>
+      <p style="margin-top: 2rem;">
+        Hormat saya,<br />
+        <strong style="color: inherit;">Badruddin - TJKT</strong>
+      </p>
+      <a href="#" onclick="showAlert()" class="back-button" id="btn-kembali">← Kembali ke awal</a>
+    </div>
+
+    <footer>
+      <p>© 2025 Badruddin - TJKT | Smakensa</p>
+    </footer>
+  </div>
+
+  <script>
+    const isi = {
+      merah: {
+        judul: "❤️ Surat Merah",
+        konten: `Kepada Kakak OSIS yang saya hormati,<br><br>
+        Terima kasih atas semua yang telah Kakak lakukan dalam membimbing kami selama MPLS. Kami tahu menjadi panitia itu tidak mudah — banyak tekanan, lelah, dan tuntutan yang harus dipenuhi.<br><br>
+        Mungkin ada momen ketika kami merasa kurang nyaman atau tertekan oleh sikap atau cara penyampaian yang Kakak lakukan. Tapi kami memahami bahwa itu mungkin cara Kakak menunjukkan tanggung jawab dan keseriusan.<br><br>
+        Dari pengalaman ini, kami belajar banyak tentang pentingnya disiplin, ketegasan, dan tanggung jawab. Walaupun terkadang terasa berat, kami tetap menghargai upaya Kakak.<br><br>
+        Harapan kami, Kakak bisa terus berkembang menjadi pribadi yang lebih bijaksana dan peka terhadap orang lain. Semoga Kakak sukses selalu dalam perjalanan belajar dan hidup ke depan.`
+      },
+      pink: {
+        judul: "🎀 Surat Pink",
+        konten: `Kepada Kakak OSIS yang saya hormati,<br><br>
+        Terima kasih sudah membimbing kami selama kegiatan MPLS ini. Walaupun waktunya singkat, saya bisa merasakan betapa sabarnya Kakak dalam membimbing, mengarahkan, dan menjaga suasana tetap menyenangkan.<br><br>
+        Kakak menunjukkan teladan yang baik — tegas namun tetap ramah, disiplin tapi tidak menakutkan. Kehadiran Kakak memberi kesan yang sangat positif.<br><br>
+        Kak adalah salah satu orang yang membuat kami merasa nyaman dan semangat selama mengikuti kegiatan. Wajah yang selalu tersenyum dan nada bicara yang santun membuat kami merasa dihargai dan diterima sebagai bagian dari sekolah ini.<br><br>
+        Semoga Kakak bisa terus menjadi sosok yang inspiratif bagi adik-adik kelas lainnya. Tetap rendah hati, dan terus berprestasi dalam bidang apa pun yang sedang Kakak jalani.`
+      },
+      biru: {
+        judul: "💙 Surat Biru",
+        konten: `Kepada Kakak OSIS yang saya hormati,<br><br>
+        Walaupun kami mungkin tidak terlalu banyak berinteraksi selama MPLS, kami tetap bisa merasakan bahwa setiap Kakak OSIS memiliki peran penting di balik layar.<br><br>
+        Terima kasih telah membantu menyusun, mengatur, dan menjaga jalannya kegiatan ini dengan baik. Meskipun tidak semua terlihat di depan, kami tahu bahwa kerja keras dan keterlibatan Kakak turut menentukan kelancaran kegiatan ini.<br><br>
+        Semoga Kakak tetap semangat, tetap rendah hati, dan selalu berkembang menjadi pribadi yang lebih baik. Kami menghargai kehadiran dan kontribusi Kakak dalam kegiatan ini.<br><br>
+        Teruslah menjadi pribadi yang bisa memberi pengaruh baik, baik untuk lingkungan sekitar maupun untuk diri sendiri.`
+      }
+    };
+
+    const warna = localStorage.getItem('suratDipilih');
+    const data = isi[warna];
+
+    if (data) {
+      document.getElementById('judul-surat').textContent = data.judul;
+      document.getElementById('konten-surat').innerHTML = data.konten;
+      document.getElementById('isi-surat').classList.add(warna);
+      document.getElementById('btn-kembali').classList.add(warna);
+    } else {
+      document.getElementById('judul-surat').textContent = "Surat Tidak Tersedia";
+      document.getElementById('konten-surat').textContent = "Kamu belum memilih surat atau membuka halaman ini langsung.";
+    }
+
+    function showAlert() {
+      const alertBox = document.getElementById("alert");
+      alertBox.classList.remove("hidden");
+      setTimeout(() => {
+        alertBox.classList.add("hidden");
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
